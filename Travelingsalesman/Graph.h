@@ -19,12 +19,12 @@ void drawCircle(int x, int y, int r);
 void drawVertex(int n);
 void drawWeight(int x, int y, int i);
 void drawLine(int x1, int y1, int x2, int y2, int w);
-void reshape(int w, int h); // если вершин будет много, то нужно увеличить окно
+void reshape(int w, int h); // РµСЃР»Рё РІРµСЂС€РёРЅ Р±СѓРґРµС‚ РјРЅРѕРіРѕ, С‚Рѕ РЅСѓР¶РЅРѕ СѓРІРµР»РёС‡РёС‚СЊ РѕРєРЅРѕ
 void setCoord(int i, int n);
 void mouseClick(int but, int state, int x, int y);
 void display();
 
-struct Pos {  // для отрисовки
+struct Pos {  // РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё
 	int x;
 	int y;
 	Pos() {
@@ -45,20 +45,20 @@ private:
 	vector<vector<int>> adj;
 public:
 
-	Graph(int size); //конструктор
-	bool isFull(); //проверка на полноту
-	bool isEmpty(); //проверка на пустоту
-	void insert_vertex(const int& t); //добавление вершины в vertexList
-	int get_vertex_index(const int& t); //получение индекса вершины
-	int get_vertex_size(); //получение кол-ва вершин
-	int get_adj(int i, int j); // получение элемента из матрицы смежности
-	void insertedge(const int& v1, const int& v2, int weight);  // добавление ребра между вершинами
-	void removeVertex(int& x); // удаление вершины
-	void addVertex(); // добавление вершины через соответствующую кнопку
-	void print(); // вывод матрицы
-	int Komi(); // решение задачи
-	void set_Graph(); // создание графа
-	void drawGraph(); // отрисовка графа
+	Graph(int size); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	bool isFull(); //РїСЂРѕРІРµСЂРєР° РЅР° РїРѕР»РЅРѕС‚Сѓ
+	bool isEmpty(); //РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	void insert_vertex(const int& t); //РґРѕР±Р°РІР»РµРЅРёРµ РІРµСЂС€РёРЅС‹ РІ vertexList
+	int get_vertex_index(const int& t); //РїРѕР»СѓС‡РµРЅРёРµ РёРЅРґРµРєСЃР° РІРµСЂС€РёРЅС‹
+	int get_vertex_size(); //РїРѕР»СѓС‡РµРЅРёРµ РєРѕР»-РІР° РІРµСЂС€РёРЅ
+	int get_adj(int i, int j); // РїРѕР»СѓС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РјР°С‚СЂРёС†С‹ СЃРјРµР¶РЅРѕСЃС‚Рё
+	void insertedge(const int& v1, const int& v2, int weight);  // РґРѕР±Р°РІР»РµРЅРёРµ СЂРµР±СЂР° РјРµР¶РґСѓ РІРµСЂС€РёРЅР°РјРё
+	void removeVertex(int& x); // СѓРґР°Р»РµРЅРёРµ РІРµСЂС€РёРЅС‹
+	void addVertex(); // РґРѕР±Р°РІР»РµРЅРёРµ РІРµСЂС€РёРЅС‹ С‡РµСЂРµР· СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ РєРЅРѕРїРєСѓ
+	void print(); // РІС‹РІРѕРґ РјР°С‚СЂРёС†С‹
+	int Komi(); // СЂРµС€РµРЅРёРµ Р·Р°РґР°С‡Рё
+	void set_Graph(); // СЃРѕР·РґР°РЅРёРµ РіСЂР°С„Р°
+	void drawGraph(); // РѕС‚СЂРёСЃРѕРІРєР° РіСЂР°С„Р°
 
 
 
@@ -91,7 +91,7 @@ bool Graph::isEmpty() {
 
 void Graph::insert_vertex(const int& t) {
 	if (this->isFull()) {
-		cout << "Невозможно добавить вершину." << endl;
+		cout << "РќРµРІРѕР·РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РІРµСЂС€РёРЅСѓ." << endl;
 		return;
 	}
 	this->vertexList.push_back(t);
@@ -118,7 +118,7 @@ void Graph::insertedge(const int& v1, const int& v2, int weight) {
 		int v_pos1 = get_vertex_index(v1);
 		int v_pos2 = get_vertex_index(v2);
 		if (this->adj[v_pos1][v_pos2] != 0 && this->adj[v_pos2][v_pos1] != 0) {
-			cout << "Ребро между вершинами есть." << endl;
+			cout << "Р РµР±СЂРѕ РјРµР¶РґСѓ РІРµСЂС€РёРЅР°РјРё РµСЃС‚СЊ." << endl;
 			return;
 		}
 		else {
@@ -127,7 +127,7 @@ void Graph::insertedge(const int& v1, const int& v2, int weight) {
 		}
 	}
 	else {
-		cout << "Обеих вершин (или одной из них) нету в графе" << endl;
+		cout << "РћР±РµРёС… РІРµСЂС€РёРЅ (РёР»Рё РѕРґРЅРѕР№ РёР· РЅРёС…) РЅРµС‚Сѓ РІ РіСЂР°С„Рµ" << endl;
 		return;
 	}
 
@@ -171,7 +171,7 @@ void Graph::addVertex() {
 	for (int i = 0; i < vertexList.size(); i++) {
 		if (i == vertexList.size() - 1) {
 			for (int z = 1; z < q; z++) {
-				cout << "Расстояние между вершиной " << z << " и вершиной " << q << " :";
+				cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ РІРµСЂС€РёРЅРѕР№ " << z << " Рё РІРµСЂС€РёРЅРѕР№ " << q << " :";
 				cin >> weight;
 				this->adj[q - 1][z - 1] = weight;
 				this->adj[z - 1][q - 1] = weight;
@@ -193,7 +193,7 @@ void Graph::addVertex() {
 
 void Graph::print() {
 	if (!this->isEmpty()) {
-		cout << "Матрица смежности: " << endl;
+		cout << "РњР°С‚СЂРёС†Р° СЃРјРµР¶РЅРѕСЃС‚Рё: " << endl;
 		cout << " -";
 		for (int i = 0; i < vertexList.size(); i++) {
 			cout << setw(4) << i + 1;
@@ -208,25 +208,25 @@ void Graph::print() {
 		}
 	}
 	else {
-		cout << "Граф пуст." << endl;
+		cout << "Р“СЂР°С„ РїСѓСЃС‚." << endl;
 	}
 }
 
 int Graph::Komi() {
-	// Метод ветвей и границ
+	// РњРµС‚РѕРґ РІРµС‚РІРµР№ Рё РіСЂР°РЅРёС†
 	vector<vector<int>> adj_Komi(vertexList.size(), vector<int>(vertexList.size()));
 	for (int i = 0; i < this->vertexList.size(); i++) {
 		for (int j = 0; j < this->vertexList.size(); j++) {
 			if (i == j) {
-				adj_Komi[i][j] = 1000; // нельзя попасть из города в N в город N
+				adj_Komi[i][j] = 1000; // РЅРµР»СЊР·СЏ РїРѕРїР°СЃС‚СЊ РёР· РіРѕСЂРѕРґР° РІ N РІ РіРѕСЂРѕРґ N
 			}
 			else {
 				adj_Komi[i][j] = this->adj[i][j];
 			}
 		}
 	}
-	vector<vector<int>> adj_Komi_origin = adj_Komi; // делаем копию матрицы
-	// 1. Поиск минимального элемента по строкам
+	vector<vector<int>> adj_Komi_origin = adj_Komi; // РґРµР»Р°РµРј РєРѕРїРёСЋ РјР°С‚СЂРёС†С‹
+	// 1. РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ СЃС‚СЂРѕРєР°Рј
 	int* di = new int[vertexList.size()];
 	int min;
 	for (int i = 0; i < vertexList.size(); i++) {
@@ -238,13 +238,13 @@ int Graph::Komi() {
 		}
 		di[i] = min;
 	}
-	// 2. Редукция строк
+	// 2. Р РµРґСѓРєС†РёСЏ СЃС‚СЂРѕРє
 	for (int i = 0; i < this->vertexList.size(); i++) {
 		for (int j = 0; j < this->vertexList.size(); j++) {
 			adj_Komi[i][j] -= di[i];
 		}
 	}
-	cout << "Минимум по строкам:" << endl;
+	cout << "РњРёРЅРёРјСѓРј РїРѕ СЃС‚СЂРѕРєР°Рј:" << endl;
 	cout << "- ";
 	for (int i = 0; i < vertexList.size(); i++) {
 		cout << setw(4) << i + 1;
@@ -258,7 +258,7 @@ int Graph::Komi() {
 		cout << endl;
 	}
 	cout << endl;
-	// 3. Поиск минимального элемента по столбцам
+	// 3. РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ СЃС‚РѕР»Р±С†Р°Рј
 	int* dj = new int[vertexList.size()];
 	for (int i = 0; i < vertexList.size(); i++) {
 		int min = 10000;
@@ -269,14 +269,14 @@ int Graph::Komi() {
 		}
 		dj[i] = min;
 	}
-	// 4. Редукция столбцов
+	// 4. Р РµРґСѓРєС†РёСЏ СЃС‚РѕР»Р±С†РѕРІ
 	for (int i = 0; i < this->vertexList.size(); i++) {
 		for (int j = 0; j < this->vertexList.size(); j++) {
 			adj_Komi[j][i] -= dj[i];
 		}
 	}
 
-	cout << "Минимум по столбцам:" << endl;
+	cout << "РњРёРЅРёРјСѓРј РїРѕ СЃС‚РѕР»Р±С†Р°Рј:" << endl;
 	cout << "- ";
 	for (int i = 0; i < vertexList.size(); i++) {
 		cout << setw(4) << i + 1;
@@ -294,7 +294,7 @@ int Graph::Komi() {
 	delete[] di;
 	delete[] dj;
 
-	//5. Оценка нулевых элементов
+	//5. РћС†РµРЅРєР° РЅСѓР»РµРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 	vector<vector<int>> temp_vector = adj_Komi;
 	int* di_ = new int[vertexList.size()];
 
@@ -343,7 +343,7 @@ int Graph::Komi() {
 		dj_[i] = min_notNull_j;
 	}
 
-	//сумма минимумов по строке и столбцу вместо нулей
+	//СЃСѓРјРјР° РјРёРЅРёРјСѓРјРѕРІ РїРѕ СЃС‚СЂРѕРєРµ Рё СЃС‚РѕР»Р±С†Сѓ РІРјРµСЃС‚Рѕ РЅСѓР»РµР№
 	for (int i = 0; i < vertexList.size(); i++) {
 		for (int j = 0; j < vertexList.size(); j++) {
 			if (temp_vector[i][j] == 0) {
@@ -351,7 +351,7 @@ int Graph::Komi() {
 			}
 		}
 	}
-	cout << "После оценки нулевых значений" << endl;
+	cout << "РџРѕСЃР»Рµ РѕС†РµРЅРєРё РЅСѓР»РµРІС‹С… Р·РЅР°С‡РµРЅРёР№" << endl;
 	cout << "- ";
 	for (int i = 0; i < vertexList.size(); i++) {
 		cout << setw(4) << i + 1;
@@ -369,7 +369,7 @@ int Graph::Komi() {
 	delete[] dj_;
 
 
-	//6. Находим максимальный элемент из нулевых клеток
+	//6. РќР°С…РѕРґРёРј РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РёР· РЅСѓР»РµРІС‹С… РєР»РµС‚РѕРє
 	vector<vector<int>> result(vertexList.size(), vector<int>(vertexList.size()));
 	for (int i = 0; i < vertexList.size(); i++) {
 		for (int j = 0; j < vertexList.size(); j++) {
@@ -420,7 +420,7 @@ int Graph::Komi() {
 
 	}
 
-	cout << "Итоговая матрица" << endl;
+	cout << "РС‚РѕРіРѕРІР°СЏ РјР°С‚СЂРёС†Р°" << endl;
 	cout << "- ";
 	for (int i = 0; i < vertexList.size(); i++) {
 		cout << setw(4) << i + 1;
@@ -434,7 +434,7 @@ int Graph::Komi() {
 		cout << endl;
 	}
 	cout << endl;
-	cout << "Минимальный путь с посещением всех вершин" << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅС‹Р№ РїСѓС‚СЊ СЃ РїРѕСЃРµС‰РµРЅРёРµРј РІСЃРµС… РІРµСЂС€РёРЅ" << endl;
 	int summ = 0;
 	int i_count = 0;
 	vector<int> min_way;
@@ -595,7 +595,7 @@ void mouseClick(int but, int state, int x, int y) {
 		if (but == GLUT_LEFT_BUTTON && state == GLUT_UP) {
 			int q;
 			cout << endl;
-			cout << "Введите номер вершины для удаления: ";
+			cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІРµСЂС€РёРЅС‹ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ";
 			cin >> q;
 			graph.removeVertex(q);
 			graph.print();
@@ -606,7 +606,7 @@ void mouseClick(int but, int state, int x, int y) {
 		if (but == GLUT_LEFT_BUTTON && state == GLUT_UP) {
 			int q;
 			cout << endl;
-			cout << "Добавление вершины: " << endl;
+			cout << "Р”РѕР±Р°РІР»РµРЅРёРµ РІРµСЂС€РёРЅС‹: " << endl;
 			graph.addVertex();
 
 		}
@@ -616,7 +616,7 @@ void mouseClick(int but, int state, int x, int y) {
 
 void Graph::set_Graph() {
 	int topverts;
-	cout << "Введите кол-во вершин: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ РІРµСЂС€РёРЅ: ";
 	cin >> topverts;
 	graph.maxSize = topverts;
 	graph.adj = vector<vector<int>>(topverts, vector<int>(topverts));
@@ -627,7 +627,7 @@ void Graph::set_Graph() {
 	}
 	for (int i = 1; i <= topverts; i++) {
 		for (int j = i + 1; j <= topverts; j++) {
-			cout << "Вес между ребром " << i << " и ребром " << j << ": ";
+			cout << "Р’РµСЃ РјРµР¶РґСѓ СЂРµР±СЂРѕРј " << i << " Рё СЂРµР±СЂРѕРј " << j << ": ";
 			cin >> weight;
 			graph.insertedge(i, j, weight);
 
